@@ -8,15 +8,27 @@ var toolbar = require('toolbar')
 var walk = require('voxel-walk')
 var colorConverter = require('./lib/color-converter.js')
 
+generator = {}
+// j: vertical, k: horizontal.
+generator['Floor'] = function(i,j,k) {
+  return j == 0 ? 1 : 0;
+}
+
 module.exports = function(opts, setup) {
   setup = setup || defaultSetup
   var defaults = {
-    generate: voxel.generator['Valley'],
+    generate: 
+              generator['Floor'],
+	      // voxel.generator['Valley'],
     chunkDistance: 2,
     materials: [
+      colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 075 }).hex(),
       colorConverter.from_cmyk({ c: 100, m: 000, y: 000, k: 000 }).hex(),
       colorConverter.from_cmyk({ c: 000, m: 100, y: 000, k: 000 }).hex(),
       colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
+      colorConverter.from_cmyk({ c: 100, m: 100, y: 000, k: 000 }).hex(),
+      colorConverter.from_cmyk({ c: 000, m: 100, y: 100, k: 000 }).hex(),
+      colorConverter.from_cmyk({ c: 100, m: 000, y: 100, k: 000 }).hex(),
     ],
     materialFlatColor: true,
     worldOrigin: [0, 0, 0],
@@ -48,7 +60,7 @@ module.exports = function(opts, setup) {
   document.body.appendChild(toolbarElement)
   var blockSelector = toolbar({
     el: '#blocks',
-    toolbarKeys: [1,2,3,4,5,6,7,8,9,0],
+    // toolbarKeys: [1,2,3,4,5,6,7,8,9,0],
   })
   blockSelector.setContent(game.materialNames.map(function(mat,id){
     if (Array.isArray(mat)) mat = mat[0]

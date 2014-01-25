@@ -10,9 +10,6 @@ module.exports = function(opts) {
           colorConverter.from_cmyk({ c: 100, m: 000, y: 000, k: 000 }).hex(),
           colorConverter.from_cmyk({ c: 000, m: 100, y: 000, k: 000 }).hex(),
           colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
-          colorConverter.from_cmyk({ c: 100, m: 100, y: 000, k: 000 }).hex(),
-          colorConverter.from_cmyk({ c: 000, m: 100, y: 100, k: 000 }).hex(),
-          colorConverter.from_cmyk({ c: 100, m: 000, y: 100, k: 000 }).hex(),
         ],
         // seeThroughMaterial: 1,
     }
@@ -35,9 +32,10 @@ module.exports = function(opts) {
                 }
             });
 
+            div.style.cursor = null;
+            div.onclick = null;
             // actually start the game here
             var opts = extend({}, defaults, opts || {});
-            debugger
             var game = require('./game.js')(opts);
         }
         colorSelectorDiv.appendChild(div);

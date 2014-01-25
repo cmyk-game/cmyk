@@ -178,12 +178,16 @@ function useCacheOrGenerateChunk(chunkPos) {
     return chunk
   // if not in cache generate floor
   } else {
-    return generateChunk(chunkPos, generateFloor)
+    return generateChunk(chunkPos, generateFill)
   }
 }
 
 function generateFloor(x,y,z) {
   return y == 0 ? 1 : 0;
+}
+
+function generateFill(x,y,z) {
+  return 1;
 }
 
 function generateChunk(chunkPos, generator, game) {

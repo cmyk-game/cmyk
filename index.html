@@ -37,12 +37,32 @@
       .bar-tab { right: 33% !important; left: 33% !important; }
       .logo {position: absolute; top: 5px; left: 5px; }
       .errorMessage { text-align: center; width: 200px; margin: 20px auto; }
+
+      #color-selector {
+          padding: 5px;
+          background: #bbb;
+          position: absolute;
+          z-index: 1;
+          display: block;
+          margin-left: auto;
+          margin-right: auto;
+      }
+      #color-selector div {
+          display: inline-block;
+          width: 80px;
+          height: 35px;
+          margin: 5px;
+          vertical-align: top;
+          text-align: center;
+          font-size: 30px;
+      }
     </style>
   </head>
   <body>
     <img class="logo" src="logo-white.png">
     <div id="container"></div>
     <div id="crosshair"><img src="crosshair.png"/></div>
+    <div id="color-selector"></div>
     <script type="text/javascript" src="bundle.js"></script>
   </body>
 </html>

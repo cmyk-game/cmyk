@@ -108,13 +108,9 @@ function defaultSetup(game, avatar) {
     if (!position) return
     if (isAltFire) {
       // place
-      console.log('place')
-      console.log(position)
       game.createBlock(position, avatar.currentMaterial)
     } else {
       // erase
-      console.log('erase')
-      console.log(position)
       if (position) game.setBlock(position, 0)
     }
     // save changes

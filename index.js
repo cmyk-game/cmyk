@@ -11,15 +11,30 @@ var colorConverter = require('./lib/color-converter.js')
 generator = {}
 // j: vertical, k: horizontal.
 generator['Floor'] = function(i,j,k) {
-  return j == 0 ? 1 : 0;
+  return (j % 25) == 0 ? Math.floor(Math.sqrt(i*i+k*k) / 5) % 6 + 1 : 0;
+}
+
+var MY_MATERIAL = 2;
+
+function isVisible(material) {
+    return material != MY_MATERIAL;
+}
+
+function visibleGeneratorFilter(originalGenerator) {
+    return function(x, y, z) {
+        var origValue = originalGenerator(x, y, z);
+        if(isVisible(origValue)) {
+            return origValue;
+        } else {
+            return 0;
+        }
+    }
 }
 
 module.exports = function(opts, setup) {
   setup = setup || defaultSetup
   var defaults = {
-    generate: 
-              generator['Floor'],
-	      // voxel.generator['Valley'],
+    generate: visibleGeneratorFilter(generator['Floor']),
     chunkDistance: 2,
     materials: [
       colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 075 }).hex(),
@@ -119,6 +134,12 @@ function defaultSetup(game, avatar) {
     var vz = Math.abs(target.velocity.z)
     if (vx > 0.001 || vz > 0.001) walk.stopWalking()
     else walk.startWalking()
+  })
+
+  game.on('setBlock', function(pos, val, old) {
+      if(!isVisible(val)) {
+          game.setBlock(pos, 0)
+      }
   })
 
 }

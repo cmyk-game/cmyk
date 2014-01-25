@@ -9,6 +9,12 @@ var walk = require('voxel-walk')
 var colorConverter = require('./lib/color-converter.js')
 var crunch = require('voxel-crunch')
 
+var MY_MATERIAL = 2;
+
+function isVisible(material) {
+    return material != MY_MATERIAL;
+}
+
 module.exports = function(opts, setup) {
   setup = setup || defaultSetup
   var defaults = {
@@ -126,6 +132,12 @@ function defaultSetup(game, avatar) {
     else walk.startWalking()
   })
 
+  game.on('setBlock', function(pos, val, old) {
+      if(!isVisible(val)) {
+          game.setBlock(pos, 0)
+      }
+  })
+
 }
 
 //
@@ -178,7 +190,7 @@ function useCacheOrGenerateChunk(chunkPos) {
     return chunk
   // if not in cache generate floor
   } else {
-    return generateChunk(chunkPos, generateFill)
+    return generateChunk(chunkPos, visibleGeneratorFilter(generateFill))
   }
 }
 
@@ -188,6 +200,17 @@ function generateFloor(x,y,z) {
 
 function generateFill(x,y,z) {
   return 1;
+}
+
+function visibleGeneratorFilter(originalGenerator) {
+    return function(x, y, z) {
+        var origValue = originalGenerator(x, y, z);
+        if(isVisible(origValue)) {
+            return origValue;
+        } else {
+            return 0;
+        }
+    }
 }
 
 function generateChunk(chunkPos, generator, game) {

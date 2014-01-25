@@ -60,7 +60,6 @@ module.exports = function(opts, setup) {
   document.body.appendChild(toolbarElement)
   var blockSelector = toolbar({
     el: '#blocks',
-    // toolbarKeys: [1,2,3,4,5,6,7,8,9,0],
   })
   blockSelector.setContent(game.materialNames.map(function(mat,id){
     if (Array.isArray(mat)) mat = mat[0]
@@ -86,11 +85,10 @@ function defaultSetup(game, avatar) {
   
   // highlight blocks when you look at them, hold <Ctrl> for block placement
   var blockPosPlace, blockPosErase
-  var hl = game.highlighter = highlight(game, { color: 0xff0000 })
-  hl.on('highlight', function (voxelPos) { blockPosErase = voxelPos })
-  hl.on('remove', function (voxelPos) { blockPosErase = null })
-  hl.on('highlight-adjacent', function (voxelPos) { blockPosPlace = voxelPos })
-  hl.on('remove-adjacent', function (voxelPos) { blockPosPlace = null })
+  var hl = game.highlighter = highlight(game, { color: 0xff0000, adjacentActive: function() {
+      return game.controls.state.alt || game.controls.state.firealt
+    },
+  })
 
   // toggle between first and third person modes
   window.addEventListener('keydown', function (ev) {
@@ -99,12 +97,18 @@ function defaultSetup(game, avatar) {
 
   // block interaction stuff, uses highlight data
   game.on('fire', function (target, state) {
-    var position = blockPosPlace
-    if (position) {
+    var isAltFire = Boolean(game.controls.state.alt || game.controls.state.firealt)
+    game.highlighter.highlight()
+    var position = isAltFire ? game.highlighter.currVoxelAdj : game.highlighter.currVoxelPos
+    if (isAltFire) {
+      // place
+      console.log('place')
+      console.log(position)
       game.createBlock(position, avatar.currentMaterial)
-    }
-    else {
-      position = blockPosErase
+    } else {
+      // erase
+      console.log('erase')
+      console.log(position)
       if (position) game.setBlock(position, 0)
     }
   })

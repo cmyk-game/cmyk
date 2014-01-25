@@ -5,13 +5,18 @@ var voxel = require('voxel')
 var extend = require('extend')
 var fly = require('voxel-fly')
 var walk = require('voxel-walk')
+var colorConverter = require('./lib/color-converter.js')
 
 module.exports = function(opts, setup) {
   setup = setup || defaultSetup
   var defaults = {
     generate: voxel.generator['Valley'],
     chunkDistance: 2,
-    materials: ['#fff', '#000'],
+    materials: [
+      colorConverter.from_cmyk({ c: 100, m: 000, y: 000, k: 000 }).hex(),
+      colorConverter.from_cmyk({ c: 000, m: 100, y: 000, k: 000 }).hex(),
+      colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
+    ],
     materialFlatColor: true,
     worldOrigin: [0, 0, 0],
     controls: { discreteFire: true }

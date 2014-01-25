@@ -4,6 +4,7 @@ var player = require('voxel-player')
 var voxel = require('voxel')
 var extend = require('extend')
 var fly = require('voxel-fly')
+var toolbar = require('toolbar')
 var walk = require('voxel-walk')
 var colorConverter = require('./lib/color-converter.js')
 
@@ -39,6 +40,28 @@ module.exports = function(opts, setup) {
   avatar.yaw.position.set(2, 14, 4)
 
   setup(game, avatar)
+
+  // block materials
+  var toolbarElement = document.createElement('div')
+  toolbarElement.id = 'blocks'
+  toolbarElement.className = 'bar-tab'
+  document.body.appendChild(toolbarElement)
+  var blockSelector = toolbar({
+    el: '#blocks',
+    toolbarKeys: [1,2,3,4,5,6,7,8,9,0],
+  })
+  blockSelector.setContent(game.materialNames.map(function(mat,id){
+    if (Array.isArray(mat)) mat = mat[0]
+    return {
+      id: id+1,
+      //icon: 'textures/'+mat+'.png',
+      label: mat,
+    }
+  }))
+  blockSelector.on('select',function(selection){
+    avatar.currentMaterial = Number(selection)
+  })
+  blockSelector.switchToolbar(0)
   
   return game
 }
@@ -63,12 +86,10 @@ function defaultSetup(game, avatar) {
   })
 
   // block interaction stuff, uses highlight data
-  var currentMaterial = 1
-
   game.on('fire', function (target, state) {
     var position = blockPosPlace
     if (position) {
-      game.createBlock(position, currentMaterial)
+      game.createBlock(position, avatar.currentMaterial)
     }
     else {
       position = blockPosErase

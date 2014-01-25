@@ -10,7 +10,7 @@ Global Game Jam page: http://globalgamejam.org/2014/
   - Programmer!
 * Ethan Kennerly
   - ethan@finegamedesign.com
-	- Programmer
+  - Programmer
 * Even Cheng
   - even.gamer@gmail.com
   - Programmer
@@ -48,7 +48,8 @@ Simple color minecraft voxel style
 
 Music Style
 ----------
-?
+medium paced
+contemplative?
 
 
 TECH

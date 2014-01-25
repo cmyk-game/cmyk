@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # voxel-hello-world
 
 Learn more at http://voxeljs.com
@@ -38,40 +39,62 @@ The upshot is, as long as you're running the `npm start` script in the backgroun
 BSD
 
 
----
+Global Game Jam page: http://globalgamejam.org/2014/
 
-Windows Help
+### TEAM MEMBERS:
 
-msysgit
-
-$ npm install
-
-If npm start crashes.
-
-$ beefy test.js:bundle.js 8080
-listening on http://localhost:8080/
-200   14ms    1.27KB /index.html
-200    8ms   32.51KB /ratchet.css
-200    4ms    6.91KB /logo-white.png
-200    3ms      882B /crosshair.png
-200 1355ms     1.3MB /bundle.js -> .\node_modules\.bin\browserify.cmd .\test.js
--d
-200   10ms     3.9KB /player.png
-200    6ms  147.63KB /favicon.ico
-
-web browser to localhost:8080
-
-Compress
-
-$ npm home voxel-crunch
-npm http GET https://registry.npmjs.org/voxel-crunch/latest
-
-Save to File
-
-http://stackoverflow.com/questions/13405129/javascript-create-and-save-file
-
-http://eligrey.com/demos/FileSaver.js/
-
-https://github.com/eligrey/FileSaver.js
+* Adam Rickert
+  - adam.rickert@gmail.com
+  - 2D Art / UI
+* Aaron Davis
+  - aaron@kumavis.me
+  - Programmer!
+* Ethan Kennerly
+  - ethan@finegamedesign.com
+  - Programmer
+* Even Cheng
+  - even.gamer@gmail.com
+  - Programmer
+* Xiaohan Zhang
+  - hellocharlien@hotmail.com
+  - Programmer
 
 
+Game Ideas
+----------
+Multiplayer cooperative maze game. Players are color coded and can 
+only interact with objects that are similarly colored.
+
+- Walls of the players color do not render for that player
+- Other players see the wall as the color it is (or black)
+- Black walls block all players
+- Can only go through walls of the same color
+- Can only look through windows of the same color
+
+
+Gameplay Style
+----------
+- Players have to pair up to go through series of doors
+- 3 player/ 1 player paths
+- Switch partners rooms
+
+
+Art Style
+----------
+Simple color minecraft voxel style
+- Solid colors
+- Prismatic if available
+- Glows if available
+
+
+Music Style
+----------
+medium paced
+contemplative?
+
+
+TECH
+----------
+- [Voxel.js](http://voxeljs.com/)
+- [Node.js](http://nodejs.org/)
+- [Browserify](http://browserify.org/)

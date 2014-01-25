@@ -53,6 +53,6 @@ Music Style
 
 TECH
 ----------
-Voxel.js
-Node.js
-Browserify
+- [Voxel.js](http://voxeljs.com/)
+- [Node.js](http://nodejs.org/)
+- [Browserify](http://browserify.org/)

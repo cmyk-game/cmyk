@@ -105,6 +105,7 @@ function defaultSetup(game, avatar) {
     var isAltFire = Boolean(game.controls.state.alt || game.controls.state.firealt)
     game.highlighter.highlight()
     var position = isAltFire ? game.highlighter.currVoxelAdj : game.highlighter.currVoxelPos
+    if (!position) return
     if (isAltFire) {
       // place
       console.log('place')

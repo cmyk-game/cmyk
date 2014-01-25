@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # voxel-hello-world
 
 Learn more at http://voxeljs.com

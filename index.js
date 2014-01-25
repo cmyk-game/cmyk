@@ -6,10 +6,10 @@ var extend = require('extend')
 var fly = require('voxel-fly')
 var toolbar = require('toolbar')
 var walk = require('voxel-walk')
+//? var save = require('FileSaver')
 var colorConverter = require('./lib/color-converter.js')
+diagram = require('./lib/diagram.js')
 
-generator = {}
-// j: vertical, k: horizontal.
 generator['Floor'] = function(i,j,k) {
   return j == 0 ? 1 : 0;
 }
@@ -18,8 +18,9 @@ module.exports = function(opts, setup) {
   setup = setup || defaultSetup
   var defaults = {
     generate: 
-              generator['Floor'],
-	      // voxel.generator['Valley'],
+              diagram.generator['Pillar'],
+              // generator['Floor'],
+	            // voxel.generator['Valley'],
     chunkDistance: 2,
     materials: [
       colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 075 }).hex(),

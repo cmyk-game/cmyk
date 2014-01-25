@@ -36,3 +36,42 @@ The upshot is, as long as you're running the `npm start` script in the backgroun
 ## license
 
 BSD
+
+
+---
+
+Windows Help
+
+msysgit
+
+$ npm install
+
+If npm start crashes.
+
+$ beefy test.js:bundle.js 8080
+listening on http://localhost:8080/
+200   14ms    1.27KB /index.html
+200    8ms   32.51KB /ratchet.css
+200    4ms    6.91KB /logo-white.png
+200    3ms      882B /crosshair.png
+200 1355ms     1.3MB /bundle.js -> .\node_modules\.bin\browserify.cmd .\test.js
+-d
+200   10ms     3.9KB /player.png
+200    6ms  147.63KB /favicon.ico
+
+web browser to localhost:8080
+
+Compress
+
+$ npm home voxel-crunch
+npm http GET https://registry.npmjs.org/voxel-crunch/latest
+
+Save to File
+
+http://stackoverflow.com/questions/13405129/javascript-create-and-save-file
+
+http://eligrey.com/demos/FileSaver.js/
+
+https://github.com/eligrey/FileSaver.js
+
+

@@ -7,6 +7,8 @@ var fly = require('voxel-fly')
 var toolbar = require('toolbar')
 var walk = require('voxel-walk')
 var crunch = require('voxel-crunch')
+var getDiagramChunk = require('./lib/diagram.js')
+var generateChunk = require('./lib/generateChunk.js')
 
 module.exports = function(opts, setup) {
   setup = setup || defaultSetup
@@ -126,7 +128,6 @@ function defaultSetup(game, avatar) {
   })
 
   game.on('setBlock', function(pos, val, old) {
-      console.log("called");
       if(!target.isVisible(val)) {
           game.setBlock(pos, 0)
       }
@@ -184,27 +185,16 @@ function useCacheOrGenerateChunk(chunkPos) {
     return chunk
   // if not in cache generate floor
   } else {
-    return generateChunk(chunkPos, generateFloor)
+    // return generateChunk(chunkPos, visibleGeneratorFilter(generateFill))
+    return getDiagramChunk(chunkPos) || generateChunk(chunkPos, generateFill)
   }
 }
 
 function generateFloor(x,y,z) {
-  return y == 0 ? Math.abs(x + z) % 7 + 1 : 0;
+  return y == 0 ? 1 : 0;
 }
 
-function generateChunk(chunkPos, generator, game) {
-  console.log('generating chunk',chunkPos)
-  var chunkSize = 32
-  var l = [chunkPos[0]*chunkSize,chunkPos[1]*chunkSize,chunkPos[2]*chunkSize]
-  var h = [(chunkPos[0]+1)*chunkSize,(chunkPos[1]+1)*chunkSize,(chunkPos[2]+1)*chunkSize]
-  var d = [ h[0]-l[0], h[1]-l[1], h[2]-l[2] ]
-  var v = new Int8Array(d[0]*d[1]*d[2])
-  var n = 0
-  for(var k=l[2]; k<h[2]; ++k)
-  for(var j=l[1]; j<h[1]; ++j)
-  for(var i=l[0]; i<h[0]; ++i, ++n) {
-    v[n] = generator(i,j,k,n,game)
-  }
-  return {voxels:v, dims:d, position: chunkPos}
+function generateFill(x,y,z) {
+  return 1;
 }
 

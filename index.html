@@ -65,8 +65,54 @@
           background: black;
           color: white;
           z-index: 10;
-          visibility: hidden;
+          visibility: visible;
       }
+      /* This button was generated using CSSButtonGenerator.com */
+      .button {
+        -moz-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+        -webkit-box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+        box-shadow:inset 0px 1px 0px 0px #d9fbbe;
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #b8e356), color-stop(1, #a5cc52) );
+        background:-moz-linear-gradient( center top, #b8e356 5%, #a5cc52 100% );
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#b8e356', endColorstr='#a5cc52');
+        background-color:#b8e356;
+        -webkit-border-top-left-radius:20px;
+        -moz-border-radius-topleft:20px;
+        border-top-left-radius:20px;
+        -webkit-border-top-right-radius:20px;
+        -moz-border-radius-topright:20px;
+        border-top-right-radius:20px;
+        -webkit-border-bottom-right-radius:20px;
+        -moz-border-radius-bottomright:20px;
+        border-bottom-right-radius:20px;
+        -webkit-border-bottom-left-radius:20px;
+        -moz-border-radius-bottomleft:20px;
+        border-bottom-left-radius:20px;
+        text-indent:0;
+        border:1px solid #83c41a;
+        display:inline-block;
+        color:#ffffff;
+        font-family:Arial;
+        font-size:15px;
+        font-weight:bold;
+        font-style:normal;
+        height:50px;
+        line-height:50px;
+        width:100px;
+        text-decoration:none;
+        text-align:center;
+        text-shadow:1px 1px 0px #86ae47;
+      }
+      .button:hover {
+        background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #a5cc52), color-stop(1, #b8e356) );
+        background:-moz-linear-gradient( center top, #a5cc52 5%, #b8e356 100% );
+        filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#a5cc52', endColorstr='#b8e356');
+        background-color:#a5cc52;
+      }.button:active {
+        position:relative;
+        top:1px;
+      }
+      /* This button was generated using CSSButtonGenerator.com */
       audio {
           z-index: 1;
           position: absolute;
@@ -108,7 +154,33 @@
     <div id="container"></div>
     <div id="crosshair"><img src="crosshair.png"/></div>
     <div id="color-selector"></div>
-    <div id="overlay"></div>
+    <div id="overlay">
+      <div id="overlayText">
+        <font size="3"><pre>
+CMYK
+Cooperate to open doors in a maze.
+
+INSTRUCTIONS
+Select a color.
+Explore the maze to find the exit.
+You can walk through and see through walls of your color.
+Stand on platforms of your color to open doors.
+
+CONTROLS
+Mouse:  Look around.
+WASD:  W: Walk forward. A: Walk left. S: Walk right. D: Back up.
+ESC: Regain mouse cursor.
+
+CHEATS
+R: Change view      
+
+Two-day game by Aaron Davis, Xiaohan Zhang, Even Cheng, Ethan Kennerly, and Adam Rickert
+For Global Game Jam 2014.
+<a href="http://github.com/cmyk-game/cmyk" target=_new>http://github.com/cmyk-game/cmyk</a>
+        </pre></font>
+      </div>
+      <a href="#" class="button" onclick="document.getElementById('overlay').style.visibility = 'hidden';">NEXT</a>
+    </div>
     <audio id="bgSoundtrackStart" onended="document.getElementById('bgSoundtrack').play(); document.getElementById('bgSoundtrack').autoplay = true" src="audio/soundtrack-start.mp3" autoplay></audio>
     <audio id="bgSoundtrack" onended="this.src = this.src;" src="audio/soundtrack-loop.mp3" controls></audio>
     <script>

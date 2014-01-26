@@ -26,7 +26,13 @@ Then run the start script:
 npm start
 ```
 
-Then point your browser to [http://localhost:8080](http://localhost:8080) and have fun!
+On Windows, you may need to run the command that appears when you run npm start, such as:
+
+```
+beefy index.js:bundle.js 
+```
+
+Then point your browser to [http://localhost:9966](http://localhost:9966) and have fun!
 
 ## How does this work?
 
@@ -48,16 +54,16 @@ Global Game Jam page: http://globalgamejam.org/2014/
   - 2D Art / UI
 * Aaron Davis
   - aaron@kumavis.me
-  - Programmer!
+  - Lead Programmer
 * Ethan Kennerly
   - kennerly@finegamedesign.com
-  - Programmer
+  - Level Editor Programmer
 * Even Cheng
   - even.gamer@gmail.com
-  - Programmer
+  - Particles Programmer
 * Xiaohan Zhang
   - hellocharlien@hotmail.com
-  - Programmer
+  - Gameplay Programmer
 
 
 Game Ideas

@@ -21,7 +21,7 @@ var gameMaterials = [
   "solid_color/red_solid",
   "solid_color/yellow_solid",
   "solid_color/orange_solid",
-  "solid_color/black_solid",  //blocks everyone
+  "white_stone_brick",  //blocks everyone
 
   //buttons, 7-11
   "button_blue",

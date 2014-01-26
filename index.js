@@ -37,7 +37,7 @@ var gameMaterials = [
 // choose a player color
 choosePlayer(playerMaterials,function(chosenColorIndex){
   var hex = playerMaterials[chosenColorIndex]
-  chosenColorIndex = gameMaterials.indexOf(hex)
+  // chosenColorIndex = gameMaterials.indexOf(hex)
   // actually start the game here
   var game = Game({
     materials: gameMaterials,

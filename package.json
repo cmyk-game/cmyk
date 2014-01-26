@@ -16,6 +16,9 @@
     "voxel-crunch": "~0.2.1",
     "underscore": "~1.5.2",
     "eventemitter2": "~0.4.13"
+    "rtc-data-stream": "0.0.1",
+    "peerjs": "kumavis/peerjs",
+    "voxel-client": "~2.1.0"
   },
   "devDependencies": {
     "browserify": "1.17.3",
@@ -23,6 +26,10 @@
     "brfs": "0.0.9"
   },
   "scripts": {
-    "start": "beefy test.js:bundle.js -- -t brfs"
+    "start": "beefy index.js:bundle.js"
+  },
+  "subdomain": "cmyk",
+  "engines": {
+    "node": "0.10.x"
   }
 }

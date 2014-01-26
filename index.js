@@ -1,6 +1,7 @@
 var Game = require('./lib/game.js')
 var choosePlayer = require('./lib/choosePlayer.js')
 var colorConverter = require('./lib/color-converter.js')
+var particles = require('./lib/particles.js')
 
 // available colors
 
@@ -11,6 +12,11 @@ var playerMaterials = [
   colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
 ]
 
+
+
+
+
+
 var gameMaterials = [
   // materials start at index 1 (since 0 is empty space)
   colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 075 }).hex(),
@@ -18,8 +24,16 @@ var gameMaterials = [
   colorConverter.from_cmyk({ c: 000, m: 100, y: 000, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 100, m: 100, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 100 }).hex(),
+  colorConverter.from_cmyk({ c: 100, m: 000, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 100, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 100, m: 100, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 100, m: 100, y: 100, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 000, m: 100, y: 100, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 050, m: 000, y: 050, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 100, m: 000, y: 100, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 075 }).hex(),
 ]
 
 // choose a player color

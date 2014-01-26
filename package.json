@@ -1,9 +1,9 @@
 {
-  "name": "voxel-hello-world",
+  "name": "cmyk-game",
   "version": "0.6.0",
   "repository": {
     "type": "git",
-    "url": "git@github.com:maxogden/voxel-hello-world.git"
+    "url": "git@github.com:cmyk-game/cmyk.git"
   },
   "dependencies": {
     "voxel": "0.3.1",
@@ -18,13 +18,17 @@
     "eventemitter2": "~0.4.13",
     "rtc-data-stream": "0.0.1",
     "peerjs": "kumavis/peerjs",
-    "voxel-client": "~2.1.0",
-    "voxel-audio": "cmyk-game/voxel-audio"
+    "voxel-audio": "cmyk-game/voxel-audio",
+    "duplex": "~1.0.0",
+    "duplex-emitter": "~2.1.2",
+    "hat": "0.0.3",
+    "minecraft-skin": "~0.1.2",
+    "three": "0.56.0"
   },
   "devDependencies": {
-    "browserify": "1.17.3",
     "beefy": "0.0.11",
-    "brfs": "0.0.9"
+    "brfs": "0.0.9",
+    "browserify": "~3.24.1"
   },
   "scripts": {
     "start": "beefy index.js:bundle.js"

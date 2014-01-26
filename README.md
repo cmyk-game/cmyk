@@ -50,7 +50,7 @@ Global Game Jam page: http://globalgamejam.org/2014/
   - aaron@kumavis.me
   - Programmer!
 * Ethan Kennerly
-  - ethan@finegamedesign.com
+  - kennerly@finegamedesign.com
   - Programmer
 * Even Cheng
   - even.gamer@gmail.com

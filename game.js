@@ -9,12 +9,14 @@ var walk = require('voxel-walk')
 var crunch = require('voxel-crunch')
 var getDiagramChunk = require('./lib/diagram.js')
 var generateChunk = require('./lib/generateChunk.js')
+var positional_listener = require("./positional_listener.js")
+var Behaviors
 
 module.exports = function(opts, setup) {
   setup = setup || defaultSetup
   var defaults = {
     generateChunks: false,
-    chunkDistance: 2,
+    chunkDistance: 1,
     materialFlatColor: true,
     worldOrigin: [0, 0, 0],
     controls: { discreteFire: true }
@@ -26,6 +28,7 @@ module.exports = function(opts, setup) {
 
   // setup the game and add some trees
   var game = createGame(opts)
+  Behaviors = require("./behaviors.js")(game)
 
   // setup chunk loading
   game.voxels.on('missingChunk', function(chunkPos) {
@@ -84,6 +87,8 @@ module.exports = function(opts, setup) {
 }
 
 function defaultSetup(game, avatar) {
+
+  positional_listener(game)
   
   var makeFly = fly(game)
   var target = game.controls.target()

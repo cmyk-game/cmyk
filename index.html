@@ -181,7 +181,8 @@ For Global Game Jam 2014.
     <audio id="bgSoundtrackStart" onended="document.getElementById('bgSoundtrack').play(); document.getElementById('bgSoundtrack').autoplay = true" src="audio/soundtrack-start.mp3" autoplay></audio>
     <audio id="bgSoundtrack" onended="this.src = this.src;" src="audio/soundtrack-loop.mp3" controls></audio>
     <script>
-        var b = document.getElementById("bgSoundtrack")
+        document.getElementById("bgSoundtrackStart").volume = 0.3;
+        document.getElementById("bgSoundtrack").volume = 0.3;
     </script>
     <script type="text/javascript" src="bundle.js"></script>
   </body>

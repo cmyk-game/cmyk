@@ -6,6 +6,8 @@ var colorConverter = require('./lib/color-converter.js')
 var networkUtils = require('./lib/networkUtil.js')
 
 // game colors
+
+// available colors
 var gameMaterials = [
   // materials start at index 1 (since 0 is empty space)
   colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 075 }).hex(),
@@ -13,8 +15,16 @@ var gameMaterials = [
   colorConverter.from_cmyk({ c: 000, m: 100, y: 000, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 100, m: 100, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 100 }).hex(),
+  colorConverter.from_cmyk({ c: 100, m: 000, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 100, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 000, y: 100, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 100, m: 100, y: 000, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 100, m: 100, y: 100, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 000, m: 100, y: 100, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 050, m: 000, y: 050, k: 000 }).hex(),
   colorConverter.from_cmyk({ c: 100, m: 000, y: 100, k: 000 }).hex(),
+  colorConverter.from_cmyk({ c: 000, m: 000, y: 000, k: 075 }).hex(),
 ]
 
 // available player colors

@@ -13,6 +13,13 @@ module.exports = function(game) {
         }
     });
 
+    game.positional.on("electricity", function(pos) {
+        var b = Behaviors[game.getBlock(pos)];
+        if(b && b.onElectricity) {
+            b.onElectricity.apply(b, arguments);
+        }
+    });
+
     // six neighbors
     function neighbors(pos) {
         return _.flatten([0,1,2].map(function (axis) {
@@ -32,18 +39,16 @@ module.exports = function(game) {
             steppedOn: function(pos) {
                           game.setTimeout(function() {
                               createItem(game, pos);
-                              // emit("electricity", pos + [0, 0, -1])
-                              // emit("electricity", pos + [0, 0, +1])
-                              // emit("electricity", pos + [0, -1, 0])
-                              // emit("electricity", pos + [0, +1, 0])
-                              // emit("electricity", pos + [-1, 0, 0])
-                              // emit("electricity", pos + [+1, 0, 0])
+                              neighbors(pos).forEach(function (tempPos) {
+                                  game.at(tempPos).emit("electricity")
+                              });
 
                               // display pressed effect
                           }, 200);
                       },
 
-            onElectricity: function() {
+            onElectricity: function(pos) {
+                               createItem(game, pos, "#00ff00");
                            },
         },
 
@@ -69,7 +74,8 @@ module.exports = function(game) {
 }
 
 
-function createItem(game, pos) {
+function createItem(game, pos, color) {
+    color = color || "#ff0000";
     // create a mesh and use the internal game material (texture atlas)
     var mesh = new game.THREE.Mesh(
             new game.THREE.CubeGeometry(.1, 3, .1), // width, height, depth
@@ -77,7 +83,7 @@ function createItem(game, pos) {
     )
 
     // paint the mesh with a specific texture in the atlas
-    game.materials.paint(mesh, '#ff0000')
+    game.materials.paint(mesh, color)
 
     // move the item to some location
     mesh.position.set(pos[0], pos[1], pos[2])
@@ -85,7 +91,11 @@ function createItem(game, pos) {
     var item = game.addItem({
         mesh: mesh,
         size: 1,
-        velocity: { x: 0, y: 0, z: 0 } // initial velocity
+        velocity: { x: 0, y: 10, z: 0 }, // initial velocity
+        acceleration: { x: 0, y: -1, z: 0},
     })
+    game.setTimeout(function() {
+        game.removeItem(item);
+    }, 1000);
     return item
 }

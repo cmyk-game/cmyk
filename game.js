@@ -28,7 +28,6 @@ module.exports = function(opts, setup) {
 
   // setup the game and add some trees
   var game = createGame(opts)
-  Behaviors = require("./behaviors.js")(game)
 
   // setup chunk loading
   game.voxels.on('missingChunk', function(chunkPos) {
@@ -87,8 +86,8 @@ module.exports = function(opts, setup) {
 }
 
 function defaultSetup(game, avatar) {
-
   positional_listener(game)
+  Behaviors = require("./behaviors.js")(game)
   
   var makeFly = fly(game)
   var target = game.controls.target()

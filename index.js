@@ -3,6 +3,28 @@ var extend = require('extend')
 
 module.exports = function(opts) {
 
+
+    /* ======= Material Atlas ==========
+     *
+     *    0 - empty space
+     *    1 - normal, grey block
+     *
+     *    2 - cyan block            (2)
+     *    3 - magenta block         (3)
+     *    4 - yellow block          (4)
+     *
+     *    5 - wire
+     *
+     *    6 - cyan platform         (a)
+     *    7 - magenta platform      (b)
+     *    8 - yellow platform       (c)
+     *
+     *    9 - cyan door             (A)
+     *    10 - magenta door         (B)
+     *    11 - yellow door          (C)
+     *
+     */
+
     var defaults = {
         materials: [
           // materials start at index 1 (since 0 is empty space)
